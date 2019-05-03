@@ -10,21 +10,15 @@
         HorizontalOptions="FillAndExpand" 
         VerticalOptions="FillAndExpand" 
         BindingContext="{Binding ListaView}">
-        
-        <Button
-            Command="{Binding EditarPageComando}"
-            HorizontalOptions="Center"
-            Text="Editar"
-            VerticalOptions="Start"/>
-        
+               
         <ListView
+            BackgroundColor="Red"
             IsPullToRefreshEnabled="True"
             RefreshCommand="{Binding RefreshComando}"
             IsRefreshing="{Binding Refrescando, Mode=TwoWay}"
             ItemsSource="{Binding Lista}"
             HasUnevenRows="False"
-            SeparatorVisibility="None"
-            
+            SeparatorVisibility="None"           
             HorizontalOptions="FillAndExpand"
             VerticalOptions="Fill">
             <ListView.ItemTemplate>
@@ -32,10 +26,17 @@
                     <Frame
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Fill">
-                        <Label Grid.Column="1" Text="{Binding Nombre}" TextColor="Black"/>
+                        <Label Text="{Binding Nombre}" TextColor="Black"/>
                     </Frame>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button
+            Command="{Binding EditarPageComando}"
+            HorizontalOptions="Center"
+            Text="Editar"
+            VerticalOptions="Start"/>
+
     </StackLayout>
 </ContentPage>
