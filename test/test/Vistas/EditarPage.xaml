@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="test.Vistas.EditarPage">
+
+    <Frame
+        CornerRadius="4"
+        HorizontalOptions="CenterAndExpand"
+        VerticalOptions="Center"
+        Margin="15">
+        <StackLayout>
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Text="{Binding cambioNombre, Mode=TwoWay}"
+                Placeholder="{Binding Nombre, Mode=TwoWay}"
+                PlaceholderColor="#D5D5D5"
+                TextColor="Black"/>
+            <Button
+                BackgroundColor="White"
+                BorderColor="Green"
+                BorderWidth="1"
+                BorderRadius="4"
+                Text="Guardar"/>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

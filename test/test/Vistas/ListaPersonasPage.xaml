@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="test.Vistas.ListaPersonasPage">
+
+    <StackLayout 
+        Orientation="Vertical"
+        HorizontalOptions="FillAndExpand" 
+        VerticalOptions="FillAndExpand" 
+        BindingContext="{Binding ListaView}">
+        
+        <Button
+            Command="{Binding EditarPageComando}"
+            HorizontalOptions="Center"
+            Text="Editar"
+            VerticalOptions="Start"/>
+        
+        <ListView
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshComando}"
+            IsRefreshing="{Binding Refrescando, Mode=TwoWay}"
+            ItemsSource="{Binding Lista}"
+            HasUnevenRows="False"
+            SeparatorVisibility="None"
+            
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Fill">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Fill">
+                        <Label Grid.Column="1" Text="{Binding Nombre}" TextColor="Black"/>
+                    </Frame>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
