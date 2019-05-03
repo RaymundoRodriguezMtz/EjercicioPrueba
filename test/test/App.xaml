@@ -6,7 +6,9 @@
     x:Class="test.App">
     <Application.Resources>
         <ResourceDictionary>
+            
             <infra:LocalizadorInstancias x:Key="Locator"/>
+        
         </ResourceDictionary>
     </Application.Resources>
 </Application>

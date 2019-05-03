@@ -5,21 +5,34 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="test.Vistas.EditarPage">
+    
     <Frame
         BindingContext="{Binding ListaView}"
         CornerRadius="4"
-        HorizontalOptions="CenterAndExpand"
-        VerticalOptions="Center"
-        Margin="5">
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="CenterAndExpand"
+        Margin="15,0">
         <StackLayout HorizontalOptions="FillAndExpand">
-            <Entry
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="Center"
-                Text="{Binding cambioNombre, Mode=TwoWay}"
-                Placeholder="{Binding Nombre}"
-                PlaceholderColor="#D5D5D5"
-                TextColor="Black"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    Text="{Binding EditaNombre, Mode=TwoWay}"
+                    Placeholder="{Binding NombreSeleccionado}"
+                    PlaceholderColor="#D5D5D5"
+                    TextColor="Black"/>
+                <Entry 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    Text="{Binding EditaApellidos, Mode=TwoWay}"
+                    Placeholder="{Binding ApellidoSeleccionado}"
+                    PlaceholderColor="#D5D5D5"
+                    TextColor="Black"/>
+            </StackLayout>
             <Button
+                Command="{Binding GuardarComando}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
                 BackgroundColor="White"
                 BorderColor="Green"
                 BorderWidth="1"
@@ -27,4 +40,5 @@
                 Text="Guardar"/>
         </StackLayout>
     </Frame>
+    
 </pages:PopupPage>

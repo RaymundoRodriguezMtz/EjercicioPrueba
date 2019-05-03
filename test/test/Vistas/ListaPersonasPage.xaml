@@ -2,41 +2,75 @@
 <ContentPage 
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:local="clr-namespace:test"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cp="clr-namespace:test.ControlesPersonalizados"
     x:Class="test.Vistas.ListaPersonasPage">
 
     <StackLayout 
+        BindingContext="{Binding ListaView}"
         Orientation="Vertical"
         HorizontalOptions="FillAndExpand" 
-        VerticalOptions="FillAndExpand" 
-        BindingContext="{Binding ListaView}">
-               
-        <ListView
-            BackgroundColor="Red"
+        VerticalOptions="FillAndExpand" >
+        <local:Milistview
+            BackgroundColor="#f5f5f6"
             IsPullToRefreshEnabled="True"
             RefreshCommand="{Binding RefreshComando}"
+            ItemsSource="{Binding ListaUsuarios}"
             IsRefreshing="{Binding Refrescando, Mode=TwoWay}"
-            ItemsSource="{Binding Lista}"
+            ItemClickCommand="{Binding ItemClickCommand}"
             HasUnevenRows="False"
             SeparatorVisibility="None"           
             HorizontalOptions="FillAndExpand"
             VerticalOptions="Fill">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Frame
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Fill">
-                        <Label Text="{Binding Nombre}" TextColor="Black"/>
-                    </Frame>
+                    <ViewCell>
+                        <Frame
+                            IsClippedToBounds="True"
+                            CornerRadius="4"
+                            HasShadow="True"
+                            Padding="0" 
+                            Margin="10,3" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Frame.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        HorizontalOptions="Start"
+                                        Aspect="AspectFit"
+                                        WidthRequest="50"
+                                        Source="img01.jpg"/>
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Large"
+                                            Text="{Binding IdUsuario}"
+                                            TextColor="Black"/>
+                                        <Label
+                                            FontSize="Large"
+                                            Text="{Binding Nombre, Mode=TwoWay}"
+                                            TextColor="Black"/>
+                                        <Label
+                                            FontSize="Large"
+                                            Text="{Binding Apellido, Mode=TwoWay}"
+                                            TextColor="Black"/>
+                                        
+                                    </StackLayout>
+                                </Grid>
+                            </Frame.Content>
+                        </Frame>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
-
-        <Button
-            Command="{Binding EditarPageComando}"
-            HorizontalOptions="Center"
-            Text="Editar"
-            VerticalOptions="Start"/>
-
+        </local:Milistview>
     </StackLayout>
 </ContentPage>

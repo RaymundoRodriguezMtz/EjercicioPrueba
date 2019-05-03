@@ -15,6 +15,7 @@ namespace test.Vistas
 		public ListaPersonasPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+
+        }
+    }
 }
